@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/shreecom/public_html/Devops/Vipul/Live Project
+    - /bin/cp -py * $DEPLOYPATH
