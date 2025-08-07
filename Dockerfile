@@ -1,17 +1,11 @@
-# Use Python base image
-FROM python:latest
+# Use official Python base image
+FROM python:3.10-slim
 
-# Set work directory
+# Set working directory inside container
 WORKDIR /app
 
-# Update system packages and install necessary packages
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y --no-install-recommends gcc libjpeg-dev zlib1g-dev && pip install --upgrade pip && pip install qrcode[pil] && apt-get purge -y gcc libjpeg-dev zlib1g-dev && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Copy current directory contents into container
+COPY . .
 
-# Copy script into container
-COPY file.py .
-
-# Set environment variable default
-ENV PASSWORD_LENGTH=12
-
-# Run the script
-CMD ["python3", "file.py"]
+# Run the Python script
+CMD ["python", "app.py"]
