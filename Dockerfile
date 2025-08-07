@@ -1,11 +1,8 @@
 # Use official Python base image
-FROM python:3.10-slim
-
-# Set working directory inside container
-WORKDIR /app
+FROM python:latest
 
 # Copy current directory contents into container
-COPY . .
+COPY python_image .
 
 # Run the Python script
-CMD ["python", "app.py"]
+CMD ["python3", "file.py"]
